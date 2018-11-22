@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title text-center class="oleo-script">My Pet Said</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="dismiss()">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content padding class="auto-scroll">
+    <ion-card>
+        <video id="video" width="100%" autoplay></video>
+        <canvas id="canvas" style="display:none;"></canvas>
+    </ion-card>
+    <div padding>
+        <button ion-button block large outline (click)="takePicture()">Tirar foto</button>
+    </div>
+</ion-content>
