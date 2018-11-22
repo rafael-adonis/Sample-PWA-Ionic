@@ -6,16 +6,17 @@
                 <br>
                 <br>
                 <h1 text-center class="oleo-script logo-title">My Dog Said</h1>
-                <br><br>
-                <ion-list no-lines>
-                    <ion-item>
-                        <ion-input type="email" placeholder="Email"></ion-input>
-                    </ion-item>
-                    <ion-item>
-                        <ion-input type="password" placeholder="Senha"></ion-input>
-                    </ion-item>
-                </ion-list>
-                <button ion-button block large outine>Entrar</button>
+                <br><br><form [formGroup]="form">
+                    <ion-list no-lines>
+                        <ion-item>
+                            <ion-input type="email" placeholder="Email" maxlength="140" formControlName="email"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-input type="password" placeholder="Senha" maxlength="20" formControlName="password"></ion-input>
+                        </ion-item>
+                    </ion-list>
+                </form>
+                <button ion-button block large outine [disabled]="!form.valid" (click)="submit()">Entrar</button>
             </ion-col>
         </ion-row>
     </ion-grid>
@@ -23,7 +24,7 @@
 <ion-footer>
     <ion-toolbar text-center>
         <ion-buttons>
-            <button small ion-button block>
+            <button small ion-button block (click)="goToSignup()">
                 <small>Ainda não tem conta? &nbsp;<strong>Cadastre-se</strong></small>
             </button>
         </ion-buttons>
