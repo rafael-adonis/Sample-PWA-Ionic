@@ -1,11 +1,30 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { ModalController, LoadingController } from 'ionic-angular';
+import { ShowMapPage } from '../show-map/show-map';
 
 @Component({
   selector: 'page-photos',
   templateUrl: 'photos.html'
 })
 export class PhotosPage {
-  constructor(public navCtrl: NavController) {
+  public photos: any[] = [];
+
+  constructor(db: AngularFireDatabase,
+    private modalCtrl: ModalController,
+    private loadingCtrl: LoadingController) {
+    let loader = this.loadingCtrl
+      .create({ content: "Carregando fotos..." });
+    loader.present();
+
+    db.list('/photos').valueChanges().subscribe(photosList => {
+      this.photos = photosList.reverse();
+      loader.dismiss();
+    });
+  }
+
+  showMap(location) {
+    let modal = this.modalCtrl.create(ShowMapPage, { location: location });
+    modal.present();
   }
 }
