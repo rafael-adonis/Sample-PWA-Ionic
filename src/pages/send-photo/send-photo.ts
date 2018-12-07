@@ -1,11 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 import { Slides, NavParams, ViewController, LoadingController, NavController, AlertController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { HomePage } from '../home/home';
 import * as firebase from 'firebase';
-import { Observable } from 'rxjs/Rx';
+// import { Observable } from 'rxjs/Rx';
 
 @Component({
   selector: 'page-send-photo',
@@ -15,7 +15,7 @@ export class SendPhotoPage {
   @ViewChild(Slides) slides: Slides;
 
   public user: string = '';
-  public photos: Observable<any>;
+  public photos: FirebaseListObservable<any>;
   public form: FormGroup;
   public photo: string = '';
   public location: string = '';
@@ -109,7 +109,7 @@ export class SendPhotoPage {
     let loader = this.loadingCtrl.create({ content: "Enviando..." });
     loader.present();
 
-    this.photos.
+    this.photos
       .push({
         user: this.user,
         image: this.photo,

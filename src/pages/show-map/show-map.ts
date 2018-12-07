@@ -14,7 +14,7 @@ export class ShowMapPage {
   }
 
   ionViewDidLoad() {
-    var html = '<iframe style="height: 90vh;" width="100%" height="99%" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAiwzOZBXbWyOQLMeVEOdVyoTte8evDv1M&q=' + this.location + '" allowfullscreen></iframe>';
+    var html = '<iframe style="height: 90vh;" width="100%" height="99%" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/MODE?key=AIzaSyBYDZ_2SVBGzdjHpfUKTOAF5pUsnwJq84I&q=' + this.location + '" allowfullscreen></iframe>';
     document.getElementById('map').innerHTML = html;
   }
 

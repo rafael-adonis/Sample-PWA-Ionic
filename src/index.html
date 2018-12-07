@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
   <title>My Pet Said</title>
@@ -19,19 +20,20 @@
   <script src="cordova.js"></script>
 
   <!-- un-comment this code to enable service worker-->
-  <script>
+  <!-- <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js')
         .then(() => console.log('service worker installed'))
         .catch(err => console.error('Error', err));
     }
-  </script>
+  </script> -->
 
   <link href="build/main.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <link rel="stylesheet" href="https://cssgram-cssgram.netdna-ssl.com/cssgram.min.css">
 
 </head>
+
 <body>
 
   <!-- Ionic's root component and where the app will load -->
@@ -46,6 +48,26 @@
 
   <!-- The main bundle js is generated during the build process -->
   <script src="build/main.js"></script>
+
+  <script>
+    document.addEventListener('DomContentLoaded', function () {
+      if (!Notification) {
+        alert('Este browser não suporta notificações');
+      }
+
+      if (Notification.permission !== "granted") {
+        Notification.requestPermission();
+      }
+
+      var notification = new Notification('Bem vindo ao My Pet Said', {
+        icon: '/assets/icon/icon-512x512.png',
+        body: "Você está navegando online, todo conteúdo será enviado para o cú da sua mãe",
+        vibrate: [200, 100, 200, 100, 200, 100, 200]
+      });
+
+      Notification.alert
+    });
+  </script>
 
 </body>
 </html>
